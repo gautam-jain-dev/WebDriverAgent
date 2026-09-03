@@ -18,6 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 /*! Defines wtether the process should perform quiescence checks. YES by default */
 @property (nonatomic) NSNumber* fb_shouldWaitForQuiescence;
 
+/**
+ Waits for the application process to become quiescent using whichever XCTest API
+ the current runtime provides (the modern waitForQuiescenceIncludingAnimationsIdle:isPreEvent:,
+ the legacy one-argument variant, or waitForQuiescence). No-ops when none is available.
+ */
+- (void)fb_waitForQuiescenceIncludingAnimationsIdle:(BOOL)includingAnimations;
+
 @end
 
 NS_ASSUME_NONNULL_END
